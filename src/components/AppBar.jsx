@@ -1,0 +1,29 @@
+import React from "react";
+import { ViewPropTypes, StyleSheet, View, Text } from "react-native";
+import Constants from 'expo-constants';
+import CustomColors from "../stylus/colors";
+
+const AppBar = () => {
+    return (
+        <View style={styles.container}>
+            <Text style={styles.text}>
+                CocaRoad
+            </Text>
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: CustomColors.secondary,
+        paddingTop: Constants.statusBarHeight + 10,
+        paddingLeft: 10,
+        paddingBottom: 10
+    },
+    text: {
+        color: 'black',
+        fontSize: 25
+    }
+})
+
+export default AppBar;
