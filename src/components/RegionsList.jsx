@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Image, ImageBackground, Pressable, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import regions from "../data/regions";
 import { useNavigation } from "@react-navigation/native";
 import AppContext from "../context/AppContext";
+import CustomColors from "../stylus/colors";
 
 const RegionsList = () => {
 
@@ -11,40 +12,64 @@ const RegionsList = () => {
     const navigation = useNavigation();
 
     return (
-        <View>
+        <SafeAreaView
+            style={styles.container}
+        >
             {regions.map(region => {
                 return (
-                    <View key={region.id} style={styles.container}>
-                        {/* <Text style={styles.title}>
-                            {region.name}
-                        </Text> */}
-                        <Button
-                            style={styles.button}
+                    <View
+                        key={region.id}
+                        style={styles.wrap}
+                    >
+                        <TouchableOpacity
                             onPress={() => {
                                 setRegion(region.name)
                                 navigation.navigate('Sheds')
                             }}
-                            title={region.name}
-                            accessibilityLabel="Learn more about"
-                        />
+                            activeOpacity={0.5}
+                        >
+                            <ImageBackground
+                                style={styles.image}
+                                source={require('../assets/icons/hoja.png')}
+                            >
+                                <Text style={styles.text}>
+                                    {region.name}
+                                </Text>
+                            </ImageBackground>
+                        </TouchableOpacity>
                     </View>
                 )
             })}
-        </View>
+        </SafeAreaView>
     )
 };
 
 const styles = StyleSheet.create({
     container: {
-        padding: 20,
+        height: '100%',
+        alignItems: 'center',
+        backgroundColor: CustomColors.grey,
+        justifyContent: 'center'
     },
-    title: {
-        textAlign: 'center',
-        marginVertical: 8,
+    wrap: {
+        height: 100,
+        width: 350,
+        overflow: 'hidden',
+        alignItems: 'center'
     },
-    button: {
-        color: '#841584'
-    }
+    image: {
+        width: 200,
+        height: 100,
+        resizeMode: 'cover'
+    },
+    text: {
+        position: 'absolute',
+        left: '15%',
+        top: '30%',
+        color: CustomColors.white,
+        fontSize: 25,
+        fontWeight: 'bold',
+    },
 });
 
 export default RegionsList;

@@ -1,14 +1,14 @@
 export default [
     {
         id: 1,
-        name: 'Adepcoca'
+        name: 'adepcoca'
     },
     {
         id: 2,
-        name: 'Sacaba'
+        name: 'sacaba'
     },
     {
         id: 3,
-        name: 'Minoritas'
+        name: 'minoristas'
     }
 ]

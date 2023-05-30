@@ -81,8 +81,9 @@ const Welcome = () => {
 
             <View style={{
                 paddingHorizontal: 22,
+                paddingVertical: 10,
                 position: "absolute",
-                top: 380,
+                top: 370,
                 width: "100%",
                 backgroundColor: CustomColors.secondary
             }}>
@@ -111,11 +112,11 @@ const Welcome = () => {
                         fontSize: 16,
                         color: CustomColors.white,
                         marginVertical: 4
-                    }}>Connect with each other with chatting</Text>
+                    }}>Connect to review the latest prices</Text>
                     <Text style={{
                         fontSize: 16,
                         color: CustomColors.white,
-                    }}>Calling, Enjoy Safe and private texting</Text>
+                    }}>Where you can choose the best</Text>
                 </View>
 
                 <Pressable
@@ -158,7 +159,7 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         paddingHorizontal: 32,
         borderRadius: 10,
-        elevation: 3,
+        elevation: 5,
         backgroundColor: CustomColors.primary,
     },
     button2: {
@@ -167,7 +168,7 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         paddingHorizontal: 32,
         borderRadius: 10,
-        elevation: 3,
+        elevation: 5,
         backgroundColor: CustomColors.grey,
     },
     text: {

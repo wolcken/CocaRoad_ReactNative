@@ -6,7 +6,11 @@ import CustomColors from "../stylus/colors";
 const AppBar = () => {
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>
+            <Text style={{
+                fontSize: 40,
+                fontWeight: 800,
+                color: CustomColors.white
+            }}>
                 CocaRoad
             </Text>
         </View>
