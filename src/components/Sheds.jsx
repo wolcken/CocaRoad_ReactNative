@@ -1,30 +1,31 @@
-import React, { useContext, useState } from "react";
-import { Image, ImageBackground, Pressable, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import regions from "../data/regions";
-import { useNavigation } from "@react-navigation/native";
-import AppContext from "../context/AppContext";
-import CustomColors from "../stylus/colors";
+import React, { useState } from 'react'
+import { View, Text, FlatList, StyleSheet, TouchableOpacity, Alert, ImageBackground } from 'react-native';
+import apiObject from '../api/DBfirestore';
+import CustomColors from '../stylus/colors';
+import ModalPrices from './ModalPrices';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-const RegionsList = () => {
+const Sheds = ({ region }) => {
 
-    const { setRegion } = useContext(AppContext);
+    const sheds = apiObject.useSheds(region);
 
-    const navigation = useNavigation();
+    const [info, setInfo] = useState([]);
+
+    const [showInfo, setShowInfo] = useState(false);
+    const handleShowInfo = (shed) => {
+        setInfo(shed)
+        setShowInfo(!showInfo);
+    }
 
     return (
-        <SafeAreaView
-            style={styles.container}
-        >
-            {regions.map(region => {
-                return (
-                    <View
-                        key={region.id}
-                        style={styles.wrap}
-                    >
+        <SafeAreaView style={styles.container}>
+            <FlatList
+                data={sheds}
+                renderItem={({ item: shed }) => (
+                    <View key={shed.id} style={styles.wrap}>
                         <TouchableOpacity
                             onPress={() => {
-                                setRegion(region.name)
-                                navigation.navigate('Sheds')
+                                handleShowInfo(shed)
                             }}
                             activeOpacity={0.5}
                         >
@@ -32,20 +33,20 @@ const RegionsList = () => {
                                 style={styles.image}
                                 source={require('../assets/icons/hoja.png')}
                             >
-                                <Text style={styles.text}>
-                                    {region.name}
-                                </Text>
+                                <Text style={styles.text}>{shed.name}</Text>
                             </ImageBackground>
                         </TouchableOpacity>
                     </View>
-                )
-            })}
+                )}
+            />
+            <ModalPrices showInfo={showInfo} setShowInfo={setShowInfo} shed={info} />
         </SafeAreaView>
     )
-};
+}
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         height: '100%',
         alignItems: 'center',
         backgroundColor: CustomColors.grey,
@@ -70,6 +71,6 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: 'bold',
     },
-});
+})
 
-export default RegionsList;
+export default Sheds;

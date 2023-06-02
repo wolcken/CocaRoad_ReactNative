@@ -1,18 +1,39 @@
-import { View, Text, Modal, StyleSheet, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import { View, Text, Modal, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import CustomColors from '../stylus/colors'
 import Prices from './Prices'
+// import * as Font from 'expo-font';
 
 const ModalPrices = ({ showInfo, setShowInfo, shed }) => {
+
+    // const [fontsLoaded, setFontsLoaded] = useState(false);
+    // useEffect(() => {
+    //     if (!fontsLoaded) {
+    //         loadFonts();
+    //     }
+    // })
+    // const loadFonts = async () => {
+    //     await Font.loadAsync({
+    //         'roboto-light': require('../assets/fonts/roboto/Roboto-Light.ttf'),
+    //         // 'ds-digib': require('./src/assets/fonts/ds_digital/DS-DIGIB.ttf'),
+    //     });
+    //     setFontsLoaded(true);
+    // }
+
+
     return (
         <>
             <Modal visible={showInfo} transparent={true} animationType='slide'>
                 <View style={styles.modal}>
                     <View style={styles.container}>
-                        <Image
-                            style={styles.image}
-                            source={require('../assets/icons/hoja.png')}
-                        />
+                        <View key={shed.id} style={styles.wrap}>
+                            <ImageBackground
+                                style={styles.image}
+                                source={require('../assets/icons/hoja.png')}
+                            >
+                                <Text style={styles.text}>Precios</Text>
+                            </ImageBackground>
+                        </View>
                         <Text style={styles.title}>{shed.name}</Text>
                         <Prices prices={shed} />
                         <TouchableOpacity
@@ -31,7 +52,7 @@ const ModalPrices = ({ showInfo, setShowInfo, shed }) => {
 const styles = StyleSheet.create({
     modal: {
         flex: 1,
-        justifyContent: 'flex-end'
+        justifyContent: 'center'
     },
     container: {
         backgroundColor: CustomColors.white,
@@ -54,10 +75,18 @@ const styles = StyleSheet.create({
         height: 100,
         width: 200
     },
+    text: {
+        position: 'absolute',
+        left: '20%',
+        top: '30%',
+        color: CustomColors.white,
+        fontSize: 25,
+        fontWeight: 'bold',
+    },
     title: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: CustomColors.primary
+        color: CustomColors.primary,
     },
     button_text: {
         color: CustomColors.white,

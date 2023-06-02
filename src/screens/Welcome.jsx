@@ -11,7 +11,7 @@ const Welcome = () => {
         <View>
             <View>
                 <Image
-                    source={require('../assets/images/hero1.jpg')}
+                    source={require('../assets/images/fot1.jpeg')}
                     style={{
                         height: 100,
                         width: 100,
@@ -27,7 +27,7 @@ const Welcome = () => {
                 />
 
                 <Image
-                    source={require("../assets/images/hero3.jpg")}
+                    source={require("../assets/images/fot2.jpeg")}
                     style={{
                         height: 100,
                         width: 100,
@@ -44,7 +44,7 @@ const Welcome = () => {
                 />
 
                 <Image
-                    source={require("../assets/images/hero3.jpg")}
+                    source={require("../assets/images/fot3.jpeg")}
                     style={{
                         width: 100,
                         height: 100,
@@ -61,7 +61,7 @@ const Welcome = () => {
                 />
 
                 <Image
-                    source={require("../assets/images/hero2.jpg")}
+                    source={require("../assets/images/fot4.jpeg")}
                     style={{
                         height: 200,
                         width: 200,
@@ -83,7 +83,7 @@ const Welcome = () => {
                 paddingHorizontal: 22,
                 paddingVertical: 10,
                 position: "absolute",
-                top: 370,
+                top: 410,
                 width: "100%",
                 backgroundColor: CustomColors.secondary
             }}>
@@ -99,13 +99,13 @@ const Welcome = () => {
                     color: CustomColors.white
                 }}>Started</Text>
 
-                <Pressable
+                {/* <Pressable
                     style={styles.button1}
                     onPress={
                         () => navigation.navigate("Home")
                     }>
                     <Text style={styles.text}>Inicio</Text>
-                </Pressable>
+                </Pressable> */}
 
                 <View style={{ marginVertical: 22 }}>
                     <Text style={{

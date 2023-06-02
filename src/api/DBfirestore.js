@@ -39,9 +39,30 @@ const useSheds = (region) => {
     return sheds;
 }
 
+//Get Prices
+const usePrices = (region) => {
+    const [prices, setPrices] = useState([]);
+
+    const getPrices = async () => {
+        const querySnapshot = await getDocs(collection(db, `departments/${region}/galpones`));
+        const docs = [];
+        querySnapshot.forEach((doc) => {
+            docs.push({...doc.data(), id: doc.id})
+        })
+        setPrices(docs);
+    }
+
+    useEffect(() => {
+        getPrices();
+    }, [])
+
+    return prices;
+}
+
 const apiObject = {
     saveRegion,
-    useSheds
+    useSheds,
+    usePrices
 }
 
 export default apiObject;
