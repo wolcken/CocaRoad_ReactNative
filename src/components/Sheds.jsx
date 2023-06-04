@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, FlatList, StyleSheet, TouchableOpacity, Alert, ImageBackground } from 'react-native';
+import { View, Text, FlatList, StyleSheet, TouchableOpacity, Alert, ImageBackground, RefreshControl } from 'react-native';
 import apiObject from '../api/DBfirestore';
 import CustomColors from '../stylus/colors';
 import ModalPrices from './ModalPrices';
@@ -9,12 +9,13 @@ const Sheds = ({ region }) => {
 
     const sheds = apiObject.useSheds(region);
 
-    const [info, setInfo] = useState([]);
+    const [info, setInfo] = useState('');
 
     const [showInfo, setShowInfo] = useState(false);
     const handleShowInfo = (shed) => {
         setInfo(shed)
         setShowInfo(!showInfo);
+        // console.log(shed)
     }
 
     return (

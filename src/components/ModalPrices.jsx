@@ -2,24 +2,9 @@ import { View, Text, Modal, StyleSheet, TouchableOpacity, ImageBackground } from
 import React, { useEffect, useState } from 'react'
 import CustomColors from '../stylus/colors'
 import Prices from './Prices'
-// import * as Font from 'expo-font';
+import apiObject from '../api/DBfirestore'
 
 const ModalPrices = ({ showInfo, setShowInfo, shed }) => {
-
-    // const [fontsLoaded, setFontsLoaded] = useState(false);
-    // useEffect(() => {
-    //     if (!fontsLoaded) {
-    //         loadFonts();
-    //     }
-    // })
-    // const loadFonts = async () => {
-    //     await Font.loadAsync({
-    //         'roboto-light': require('../assets/fonts/roboto/Roboto-Light.ttf'),
-    //         // 'ds-digib': require('./src/assets/fonts/ds_digital/DS-DIGIB.ttf'),
-    //     });
-    //     setFontsLoaded(true);
-    // }
-
 
     return (
         <>
@@ -45,6 +30,7 @@ const ModalPrices = ({ showInfo, setShowInfo, shed }) => {
                     </View>
                 </View>
             </Modal>
+            {/* <Text>{name}</Text> */}
         </>
     )
 }
@@ -52,7 +38,7 @@ const ModalPrices = ({ showInfo, setShowInfo, shed }) => {
 const styles = StyleSheet.create({
     modal: {
         flex: 1,
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     container: {
         backgroundColor: CustomColors.white,
@@ -86,7 +72,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: CustomColors.primary,
+        color: CustomColors.white,
     },
     button_text: {
         color: CustomColors.white,

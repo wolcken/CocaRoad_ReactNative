@@ -12,7 +12,7 @@ export default function App() {
     })
     const loadFonts = async () => {
         await Font.loadAsync({
-            // 'roboto-light': require('./src/assets/fonts/roboto/Roboto-Light.ttf'),
+            'roboto': require('./src/assets/fonts/roboto/Roboto-Light.ttf'),
             'digital': require('./src/assets/fonts/digital/wwDigital.ttf'),
         });
         setFontsLoaded(true);

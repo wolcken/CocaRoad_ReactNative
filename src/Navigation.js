@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import CustonDrawer from './components/CustonDrawer';
 
-//Screens
+//Screens Public
 import Login from './screens/Login';
 import Signup from './screens/Signup';
 import Welcome from './screens/Welcome';
@@ -13,6 +13,10 @@ import CustomColors from './stylus/colors';
 import Adepcoca from './screens/Adepcoca';
 import Sacaba from './screens/Sacaba';
 import Minorista from './screens/Minorista';
+
+//Screens Admin
+import Create from './admin/Create';
+import Manage from './admin/Manage';
 
 //icons
 import { Ionicons } from "@expo/vector-icons";
@@ -118,6 +122,20 @@ function MyStack() {
                 options={{
                     headerShown: false
                 }}
+            />
+            <Stack.Screen 
+                name='Manage'
+                component={Manage}
+                options={{ 
+                    // headerShown: false
+                 }}
+            />
+            <Stack.Screen 
+                name='Create'
+                component={Create}
+                options={{ 
+                    // headerShown: false
+                 }}
             />
         </Stack.Navigator>
     )
