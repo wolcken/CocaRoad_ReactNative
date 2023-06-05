@@ -1,15 +1,22 @@
-import { View, Text, Modal, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { View, Text, Modal, StyleSheet, TouchableOpacity, ImageBackground, Alert, Pressable } from 'react-native'
+import React from 'react'
 import CustomColors from '../stylus/colors'
 import Prices from './Prices'
-import apiObject from '../api/DBfirestore'
 
 const ModalPrices = ({ showInfo, setShowInfo, shed }) => {
 
     return (
         <>
-            <Modal visible={showInfo} transparent={true} animationType='slide'>
-                <View style={styles.modal}>
+            <Modal
+                visible={showInfo}
+                transparent={true}
+                animationType='slide'
+                onRequestClose={() => setShowInfo(!setShowInfo)}
+            >
+                <Pressable
+                    style={styles.modal}
+                    onPressOut={() => setShowInfo(!setShowInfo)}
+                >
                     <View style={styles.container}>
                         <View key={shed.id} style={styles.wrap}>
                             <ImageBackground
@@ -21,16 +28,15 @@ const ModalPrices = ({ showInfo, setShowInfo, shed }) => {
                         </View>
                         <Text style={styles.title}>{shed.name}</Text>
                         <Prices prices={shed} />
-                        <TouchableOpacity
+                        {/* <TouchableOpacity
                             onPress={() => setShowInfo(!setShowInfo)}
                             activeOpacity={0.5}
                         >
                             <Text style={styles.button_text}>Closed</Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                     </View>
-                </View>
+                </Pressable>
             </Modal>
-            {/* <Text>{name}</Text> */}
         </>
     )
 }
@@ -72,7 +78,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: CustomColors.white,
+        color: CustomColors.primary,
     },
     button_text: {
         color: CustomColors.white,

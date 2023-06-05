@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { View, Text, FlatList, StyleSheet, TouchableOpacity, Alert, ImageBackground, RefreshControl } from 'react-native';
 import apiObject from '../api/DBfirestore';
 import CustomColors from '../stylus/colors';
@@ -18,27 +18,53 @@ const Sheds = ({ region }) => {
         // console.log(shed)
     }
 
+    //refreshing
+    const [refreshing, setRefreshing] = useState(false);
+
+    const onRefresh = useCallback(() => {
+        setRefreshing(true);
+
+        setTimeout(() => {
+            setRefreshing(false);
+        }, 1000);
+    }, []);
+
     return (
         <SafeAreaView style={styles.container}>
             <FlatList
                 data={sheds}
                 renderItem={({ item: shed }) => (
-                    <View key={shed.id} style={styles.wrap}>
-                        <TouchableOpacity
-                            onPress={() => {
-                                handleShowInfo(shed)
-                            }}
-                            activeOpacity={0.5}
-                        >
-                            <ImageBackground
-                                style={styles.image}
-                                source={require('../assets/icons/hoja.png')}
-                            >
-                                <Text style={styles.text}>{shed.name}</Text>
-                            </ImageBackground>
-                        </TouchableOpacity>
-                    </View>
+                    <>
+                        {
+                            shed.view === true ?
+                                <View key={shed.id} style={styles.wrap}>
+                                    <TouchableOpacity
+                                        onPress={() => {
+                                            handleShowInfo(shed)
+                                        }}
+                                        activeOpacity={0.5}
+                                    >
+                                        <ImageBackground
+                                            style={styles.image}
+                                            source={require('../assets/icons/hoja.png')}
+                                        >
+                                            <Text style={styles.text}>{shed.name}</Text>
+                                        </ImageBackground>
+                                    </TouchableOpacity>
+                                </View>
+                                :
+                                null
+                        }
+                    </>
                 )}
+                refreshControl={
+                    <RefreshControl
+                        refreshing={refreshing}
+                        onRefresh={onRefresh}
+                        progressBackgroundColor={CustomColors.secondary}
+                        colors={[CustomColors.white, CustomColors.primary]}
+                    />
+                }
             />
             <ModalPrices showInfo={showInfo} setShowInfo={setShowInfo} shed={info} />
         </SafeAreaView>

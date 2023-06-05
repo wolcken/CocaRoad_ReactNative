@@ -3,9 +3,9 @@ import React, { useState } from 'react'
 const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
-    const [region, setRegion] = useState('');
+    const [price, setPrice] = useState('');
     return (
-        <AppContext.Provider value={{ region, setRegion }}>
+        <AppContext.Provider value={{ price, setPrice }}>
             {children}
         </AppContext.Provider>
     )

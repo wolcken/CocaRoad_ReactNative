@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: CustomColors.black,
-        fontSize: 18
+        fontSize: 15
         // margin: 10,
         // fontFamily: 'digital'
     }

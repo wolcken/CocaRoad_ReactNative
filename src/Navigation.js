@@ -21,6 +21,9 @@ import Manage from './admin/Manage';
 //icons
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from '@expo/vector-icons';
+import Testing from './screens/Testing';
+import Delete from './admin/Delete';
+import Edit from './admin/Edit';
 
 //Drawers navigation
 const Drawer = createDrawerNavigator();
@@ -133,6 +136,27 @@ function MyStack() {
             <Stack.Screen 
                 name='Create'
                 component={Create}
+                options={{ 
+                    // headerShown: false
+                 }}
+            />
+            <Stack.Screen 
+                name='Delete'
+                component={Delete}
+                options={{ 
+                    // headerShown: false
+                 }}
+            />
+            <Stack.Screen 
+                name='Edit'
+                component={Edit}
+                options={{ 
+                    // headerShown: false
+                 }}
+            />
+            <Stack.Screen 
+                name='Test'
+                component={Testing}
                 options={{ 
                     // headerShown: false
                  }}

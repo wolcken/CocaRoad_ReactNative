@@ -18,7 +18,14 @@ const Manage = () => {
 
             <Pressable
                 style={styles.button}
-                onPress={() => { console.log('hi') }}
+                onPress={() => { navigation.navigate('Delete') }}
+            >
+                <Text style={styles.text}>Delete</Text>
+            </Pressable>
+
+            <Pressable
+                style={styles.button}
+                onPress={() => { navigation.navigate('Edit') }}
             >
                 <Text style={styles.text}>Edit</Text>
             </Pressable>

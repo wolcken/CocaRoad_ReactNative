@@ -1,53 +1,76 @@
-import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
+import { View, Text, StyleSheet, SafeAreaView, FlatList, TouchableOpacity, ImageBackground } from 'react-native'
+import React, { useState } from 'react'
+import apiObject from '../api/DBfirestore'
+import CustomColors from '../stylus/colors'
+import { useNavigation } from '@react-navigation/native'
 
 const Minorista = () => {
+
+  const navigation = useNavigation()
+
+  const region = 'adepcoca'
+  
+  // const aux2 = apiObject.useAux();
+  // console.log(aux2);
+
+  const handleGalpon = (item) => {
+    navigation.navigate('Test', {prec: item})
+  }
+  
+
   return (
-    <View>
-      <View style={styles.container}>
-        <Text style={styles.text}>1</Text>
-        <Text style={styles.text}>8</Text>
-        <Text style={styles.text}>5</Text>
-        <Text style={styles.text}>0</Text>
-      </View>
-
-      <View style={styles.container}>
-        <Text style={styles.text}>0</Text>
-        <Text style={styles.text}>6</Text>
-        <Text style={styles.text}>0</Text>
-        <Text style={styles.text}>0</Text>
-      </View>
-
-      <View style={styles.container}>
-        <Text style={styles.text}>2</Text>
-        <Text style={styles.text}>0</Text>
-        <Text style={styles.text}>5</Text>
-        <Text style={styles.text}>0</Text>
-      </View>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={aux2}
+        renderItem={({ item }) => (
+          <View key={item} style={styles.wrap}>
+            <TouchableOpacity
+              onPress={() => {
+                handleGalpon(item)
+              }}
+              activeOpacity={0.5}
+            >
+              <ImageBackground
+                style={styles.image}
+                source={require('../assets/icons/hoja.png')}
+              >
+                <Text style={styles.text}>{item}</Text>
+              </ImageBackground>
+            </TouchableOpacity>
+          </View>
+        )}
+      />
+    </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    backgroundColor: 'green',
-    padding: 20,
+    flex: 1,
+    height: '100%',
+    alignItems: 'center',
+    backgroundColor: CustomColors.grey,
+    justifyContent: 'center'
+  },
+  wrap: {
+    height: 100,
+    width: 350,
+    overflow: 'hidden',
+    alignItems: 'center'
+  },
+  image: {
+    width: 200,
+    height: 100,
+    resizeMode: 'cover'
   },
   text: {
-    backgroundColor: 'black',
-    color: 'white',
+    position: 'absolute',
+    left: '15%',
+    top: '30%',
+    color: CustomColors.white,
     fontSize: 25,
-    padding: 2,
-    margin: 5,
-    borderColor: 'white',
-    borderTopWidth: 0.5,
-    // borderRightWidth: 0.5,
-    borderBottomWidth: 0.5,
-    // borderRightWidth: 1,
-    textAlign: 'center',
-    fontFamily: 'digital'
-  }
+    fontWeight: 'bold',
+  },
 })
 
 export default Minorista

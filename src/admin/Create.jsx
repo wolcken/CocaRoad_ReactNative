@@ -2,9 +2,12 @@ import { View, Text, ScrollView, TextInput, TouchableOpacity, StyleSheet, Alert,
 import React, { useState } from 'react'
 import CustomColors from '../stylus/colors'
 import apiObject from '../api/DBfirestore'
+import { useNavigation } from '@react-navigation/native'
 
 
 const Create = () => {
+
+    const navigation = useNavigation();
 
     const region = 'adepcoca';
 
@@ -29,7 +32,8 @@ const Create = () => {
         if (state.name === '') {
             Alert.alert('Please Provider a name')
         } else {
-            apiObject.setShed(state, region)
+            apiObject.setShed(state, region);
+            navigation.navigate('Manage')
         }
         // console.log(state)
     }
@@ -42,8 +46,8 @@ const Create = () => {
                 <TextInput
                     style={styles.input}
                     placeholder='Galpon'
-
                     onChangeText={(value) => handleChanges('name', value)}
+                    value={state.name}
                 />
             </View>
             <View style={styles.container}>
@@ -53,6 +57,7 @@ const Create = () => {
                     placeholder='Elegida Especial'
                     keyboardType='numeric'
                     onChangeText={(value) => handleChanges('elegida_kl', value)}
+                    value={state.elegida_kl}
                 />
             </View>
             <View style={styles.container}>
