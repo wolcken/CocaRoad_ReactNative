@@ -60,7 +60,9 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 4,
-        elevation: 10
+        elevation: 10,
+        borderWidth: 1,
+        borderColor: CustomColors.grey
     },
     image: {
         resizeMode: 'cover',

@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity, Button, Pressable, Image } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, Button, Pressable, Image, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import CustomColors from '../stylus/colors'
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -12,10 +12,10 @@ const Signup = () => {
   const [password, setPassword] = useState(false);
 
   return (
-    <SafeAreaView style={{ 
+    <SafeAreaView style={{
       flex: 1,
-      backgroundColor: CustomColors.secondary
-     }}>
+      backgroundColor: CustomColors.white
+    }}>
       <View style={{ flex: 1, marginHorizontal: 22 }}>
         <View style={{ marginVertical: 22 }}>
           <Text style={{
@@ -147,14 +147,13 @@ const Signup = () => {
           </View>
         </View>
 
-        <Button
-          title="Sign Up"
-          filled
-          style={{
-            marginTop: 18,
-            marginBottom: 4,
-          }}
-        />
+        {/* Button Sing up */}
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => { }}
+        >
+          <Text style={styles.text}>Sing up</Text>
+        </TouchableOpacity>
 
         <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 20 }}>
           <View
@@ -256,5 +255,25 @@ const Signup = () => {
     </SafeAreaView>
   )
 }
+
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: CustomColors.secondary,
+    marginTop: 20,
+    padding: 10,
+    borderRadius: 15,
+    elevation: 5,
+    borderWidth: 1,
+    borderColor: CustomColors.grey
+  },
+  text: {
+    color: CustomColors.white,
+    textAlign: 'center',
+    justifyContent: 'center',
+    fontSize: 20,
+    fontWeight: 'bold'
+  }
+
+})
 
 export default Signup

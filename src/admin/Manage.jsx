@@ -1,4 +1,4 @@
-import { View, Text, Pressable, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
 import CustomColors from '../stylus/colors';
 import { useNavigation } from '@react-navigation/native';
@@ -9,50 +9,56 @@ const Manage = () => {
 
     return (
         <View style={styles.container}>
-            <Pressable
+            <TouchableOpacity
+                // disabled={true}
                 style={styles.button}
                 onPress={() => { navigation.navigate('Create') }}
             >
                 <Text style={styles.text}>Create</Text>
-            </Pressable>
+            </TouchableOpacity>
 
-            <Pressable
+            <TouchableOpacity
+                // disabled={true}
                 style={styles.button}
                 onPress={() => { navigation.navigate('Delete') }}
+
             >
                 <Text style={styles.text}>Delete</Text>
-            </Pressable>
+            </TouchableOpacity>
 
-            <Pressable
+            <TouchableOpacity
+                // disabled={true}
                 style={styles.button}
                 onPress={() => { navigation.navigate('Edit') }}
             >
                 <Text style={styles.text}>Edit</Text>
-            </Pressable>
+            </TouchableOpacity>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        padding: 20
+        flex: 1,
+        padding: 20,
+        justifyContent: 'center'
     },
     button: {
-        margin: 10,
+        margin: 20,
         alignItems: 'center',
-        justifyContent: 'center',
         paddingVertical: 12,
-        paddingHorizontal: 32,
-        borderRadius: 4,
-        elevation: 3,
-        backgroundColor: CustomColors.primary,
+        borderRadius: 15,
+        elevation: 5,
+        backgroundColor: CustomColors.secondary,
+        borderWidth: 1,
+        borderColor: CustomColors.grey
     },
     text: {
-        fontSize: 16,
-        lineHeight: 21,
-        fontWeight: 'bold',
-        letterSpacing: 0.25,
-        color: 'white',
+        color: CustomColors.white,
+        textAlign: 'center',
+        justifyContent: 'center',
+        fontSize: 20,
+        fontWeight: 'bold'
     },
 });
 

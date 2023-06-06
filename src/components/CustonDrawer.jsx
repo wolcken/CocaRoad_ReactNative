@@ -61,7 +61,7 @@ const CustonDrawer = (props) => {
                 <TouchableOpacity
                     style={{ paddingVertical: 15 }}
                     onPress={() => { 
-                        navigation.navigate('Manage');
+                        navigation.navigate('Login');
                      }}
                 >
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>

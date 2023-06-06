@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import appFirebase from "../../Credenciales";
-import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc, getDoc, setDoc, query, where, onSnapshot } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc, getDoc, setDoc, query, where, onSnapshot, updateDoc } from 'firebase/firestore';
 import { Alert } from 'react-native';
 
 const db = getFirestore(appFirebase);
@@ -24,7 +24,7 @@ const setShed = async (state, region) => {
         Alert.alert('Alerta', 'guardado con exito')
 
     }
-    catch {
+    catch (error) {
         console.error(error)
     }
 }
@@ -66,28 +66,49 @@ const deleteShed = async (region, shed) => {
     }
 }
 
-//Get Prices of Shed
-const usePrice = (region, shed) => {
-    const [price, setPrice] = useState([]);
-
-    const getPrice = async () => {
-        const docRef = doc(db, `departments/${region}/galpones`, `${shed}`);
-        const docSnap = await getDoc(docRef);
-
-        if (docSnap.exists()) {
-            // console.log("Document data:", docSnap.data());
-            setPrice(docSnap.data())
-        } else {
-            console.log("No such document!");
-        }
+const updateShed = async (region, state) => {
+    const docRef = doc(db, `departments/${region}/galpones`, `${state.name}`);
+    try {
+        await updateDoc(docRef, {
+            name: String(state.name),
+            elegida_kl: Number(state.elegida_kl),
+            hojeada_esp: Number(state.hojeada_esp),
+            hojeada: Number(state.hojeada),
+            mediana_esp: Number(state.mediana_esp),
+            mediana: Number(state.mediana),
+            comun: Number(state.comun),
+            chimi: Number(state.chimi),
+            choqueta: Number(state.choqueta),
+            view: Boolean(state.view)
+        })
+        Alert.alert('Alerta', 'Modificado con exito')
+    } catch (error) {
+        console.error(error)
     }
-
-    useEffect(() => {
-        getPrice();
-    }, [])
-
-    return price
 }
+
+//Get Prices of Shed
+// const usePrice = (region, shed) => {
+
+//     const [galpon, setGalpon] = useState([])
+
+//     const getPrice = async () => {
+//         const docRef = doc(db, `departments/${region}/galpones`, `${shed}`);
+//         const docSnap = await getDoc(docRef)
+
+//         if (docSnap.exists()) {
+//             setGalpon(docSnap.data())
+//         } else {
+//             console.log("No such document!");
+//         }
+//     }
+
+//     useEffect(() => {
+//         getPrice()
+//     }, [])
+
+//     return galpon
+// }
 
 //Get Price
 // const usePrice = async (region, shed) => {
@@ -135,7 +156,8 @@ const apiObject = {
     setShed,
     useSheds,
     deleteShed,
-    usePrice,
+    updateShed,
+    // usePrice,
     // useAux
 }
 

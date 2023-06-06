@@ -24,6 +24,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import Testing from './screens/Testing';
 import Delete from './admin/Delete';
 import Edit from './admin/Edit';
+import EditPrices from './admin/EditPrices';
 
 //Drawers navigation
 const Drawer = createDrawerNavigator();
@@ -116,50 +117,71 @@ function MyStack() {
                 name='Login'
                 component={Login}
                 options={{
-                    headerShown: false
+                    // headerShown: false
+                    headerStyle: { backgroundColor: CustomColors.secondary },
+                    headerTitleStyle: {color: CustomColors.white}
                 }}
             />
             <Stack.Screen
                 name='Signup'
                 component={Signup}
                 options={{
-                    headerShown: false
+                    // headerShown: false
+                    headerStyle: { backgroundColor: CustomColors.secondary },
+                    headerTitleStyle: {color: CustomColors.white}
                 }}
             />
-            <Stack.Screen 
+            <Stack.Screen
                 name='Manage'
                 component={Manage}
-                options={{ 
+                options={{
                     // headerShown: false
-                 }}
+                    headerStyle: { backgroundColor: CustomColors.secondary },
+                    headerTitleStyle: {color: CustomColors.white}
+                }}
             />
-            <Stack.Screen 
+            <Stack.Screen
                 name='Create'
                 component={Create}
-                options={{ 
+                options={{
                     // headerShown: false
-                 }}
+                    headerStyle: { backgroundColor: CustomColors.secondary },
+                    headerTitleStyle: {color: CustomColors.white}
+                }}
             />
-            <Stack.Screen 
+            <Stack.Screen
                 name='Delete'
                 component={Delete}
-                options={{ 
+                options={{
                     // headerShown: false
-                 }}
+                    headerStyle: { backgroundColor: CustomColors.secondary },
+                    headerTitleStyle: {color: CustomColors.white}
+                }}
             />
-            <Stack.Screen 
+            <Stack.Screen
                 name='Edit'
                 component={Edit}
-                options={{ 
-                    // headerShown: false
-                 }}
+                options={{
+                    // headerShown: false,
+                    headerStyle: { backgroundColor: CustomColors.secondary },
+                    headerTitleStyle: {color: CustomColors.white}
+                }}
             />
-            <Stack.Screen 
+            <Stack.Screen
+                name='EditPrices'
+                component={EditPrices}
+                options={{
+                    // headerShown: false
+                    headerStyle: { backgroundColor: CustomColors.secondary },
+                    headerTitleStyle: {color: CustomColors.white}
+                }}
+            />
+            <Stack.Screen
                 name='Test'
                 component={Testing}
-                options={{ 
+                options={{
                     // headerShown: false
-                 }}
+                }}
             />
         </Stack.Navigator>
     )

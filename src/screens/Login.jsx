@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity, Button, Image, Pressable } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, Button, Image, Pressable, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import CustomColors from '../stylus/colors'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -12,7 +12,7 @@ const Login = () => {
     const [password, setPassword] = useState(false);
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: CustomColors.secondary }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: CustomColors.white }}>
             <View style={{ flex: 1, marginHorizontal: 22 }}>
                 <View style={{ marginVertical: 22 }}>
                     <Text style={{
@@ -103,14 +103,13 @@ const Login = () => {
                     </View>
                 </View>
 
-                <Button
-                    title="Login"
-                    filled
-                    style={{
-                        marginTop: 18,
-                        marginBottom: 4,
-                    }}
-                />
+                {/* Button Log in */}
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => { navigation.navigate('Manage') }}
+                >
+                    <Text style={styles.text}>Login</Text>
+                </TouchableOpacity>
 
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 20 }}>
                     <View
@@ -212,5 +211,25 @@ const Login = () => {
         </SafeAreaView>
     )
 }
+
+const styles = StyleSheet.create({
+    button: {
+        backgroundColor: CustomColors.secondary,
+        marginTop: 20,
+        padding: 10,
+        borderRadius: 15,
+        elevation: 5,
+        borderWidth: 1,
+        borderColor: CustomColors.grey
+    },
+    text: {
+        color: CustomColors.white,
+        textAlign: 'center',
+        justifyContent: 'center',
+        fontSize: 20,
+        fontWeight: 'bold'
+    }
+
+})
 
 export default Login

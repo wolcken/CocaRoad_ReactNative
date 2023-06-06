@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
         flex: 1,
         height: '100%',
         alignItems: 'center',
-        backgroundColor: CustomColors.grey,
+        backgroundColor: CustomColors.white,
         justifyContent: 'center'
     },
     wrap: {

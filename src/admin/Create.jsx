@@ -39,10 +39,10 @@ const Create = () => {
     }
 
     return (
-        <ScrollView style={{ padding: 10, backgroundColor: 'white' }}>
+        <ScrollView style={{ padding: 20, backgroundColor: 'white' }}>
 
             <View style={styles.container}>
-                <Text>Galpon</Text>
+                <Text style={styles.text1}>Galpon</Text>
                 <TextInput
                     style={styles.input}
                     placeholder='Galpon'
@@ -51,7 +51,7 @@ const Create = () => {
                 />
             </View>
             <View style={styles.container}>
-                <Text>Elegida Kl</Text>
+                <Text style={styles.text1}>Elegida Kl</Text>
                 <TextInput
                     style={styles.input}
                     placeholder='Elegida Especial'
@@ -61,7 +61,7 @@ const Create = () => {
                 />
             </View>
             <View style={styles.container}>
-                <Text>Hojeada Especial</Text>
+                <Text style={styles.text1}>Hojeada Especial</Text>
                 <TextInput
                     style={styles.input}
                     placeholder='Hojeada Especial'
@@ -70,7 +70,7 @@ const Create = () => {
                 />
             </View>
             <View style={styles.container}>
-                <Text>Hojeada</Text>
+                <Text style={styles.text1}>Hojeada</Text>
                 <TextInput
                     style={styles.input}
                     placeholder='Hojeada'
@@ -79,7 +79,7 @@ const Create = () => {
                 />
             </View>
             <View style={styles.container}>
-                <Text>Mediana Especial</Text>
+                <Text style={styles.text1}>Mediana Especial</Text>
                 <TextInput
                     style={styles.input}
                     placeholder='Mediana Especial'
@@ -88,7 +88,7 @@ const Create = () => {
                 />
             </View>
             <View style={styles.container}>
-                <Text>Mediana</Text>
+                <Text style={styles.text1}>Mediana</Text>
                 <TextInput
                     style={styles.input}
                     placeholder='Mediana'
@@ -97,7 +97,7 @@ const Create = () => {
                 />
             </View>
             <View style={styles.container}>
-                <Text>Comun</Text>
+                <Text style={styles.text1}>Comun</Text>
                 <TextInput
                     style={styles.input}
                     placeholder='Comun'
@@ -106,7 +106,7 @@ const Create = () => {
                 />
             </View>
             <View style={styles.container}>
-                <Text>Chimi</Text>
+                <Text style={styles.text1}>Chimi</Text>
                 <TextInput
                     style={styles.input}
                     placeholder='Chimi'
@@ -115,7 +115,7 @@ const Create = () => {
                 />
             </View>
             <View style={styles.container}>
-                <Text>Choqueta</Text>
+                <Text style={styles.text1}>Choqueta</Text>
                 <TextInput
                     style={styles.input}
                     placeholder='Choqueta'
@@ -124,6 +124,7 @@ const Create = () => {
                 />
             </View>
             <View style={styles.switch}>
+                <Text style={styles.text1}>Preview</Text>
                 <Switch
                     trackColor={{ false: CustomColors.grey, true: CustomColors.primary }}
                     onValueChange={(value) => handleChanges('view', value)}
@@ -132,9 +133,10 @@ const Create = () => {
             </View>
             <View style={styles.container}>
                 <TouchableOpacity
+                    style={styles.button}
                     onPress={saveNewShed}
                 >
-                    <Text>Save</Text>
+                    <Text style={styles.text2}>Save</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>
@@ -159,6 +161,29 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        flexDirection: 'row'
+    },
+    button: {
+        backgroundColor: CustomColors.secondary,
+        marginTop: 10,
+        marginBottom: 20,
+        padding: 10,
+        borderRadius: 15,
+        elevation: 5,
+        borderWidth: 1,
+        borderColor: CustomColors.grey
+    },
+    text1: {
+        color: CustomColors.primary,
+        fontSize: 15,
+        fontWeight: 'bold'
+    },
+    text2: {
+        color: CustomColors.white,
+        textAlign: 'center',
+        justifyContent: 'center',
+        fontSize: 20,
+        fontWeight: 'bold'
     }
 })
 
