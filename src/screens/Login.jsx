@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity, Button, Image, Pressable, StyleSheet } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, Button, Image, Pressable, StyleSheet, Alert } from 'react-native'
 import React, { useState } from 'react'
 import CustomColors from '../stylus/colors'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -9,7 +9,32 @@ const Login = () => {
 
     const navigation = useNavigation();
 
-    const [password, setPassword] = useState(false);
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('');
+
+    const handleConfirm = () => {
+        {
+            email === 'Admin' && password === 'Admin' ?
+
+                Alert.alert('Alert', 'Access allowed, handle with care', [
+                    {
+                        text: 'Cancel',
+                        onPress: () => console.log('Cancel Pressed'),
+                        style: 'cancel',
+                    },
+                    { text: 'OK', onPress: () => navigation.navigate('Manage') },
+                ])
+                :
+                Alert.alert('Alert', 'No Access, try again', [
+                    // {
+                    //     text: 'Cancel',
+                    //     onPress: () => console.log('Cancel Pressed'),
+                    //     style: 'cancel',
+                    // },
+                    { text: 'OK', onPress: () => console.log('OK Pressed') },
+                ])
+        }
+    }
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: CustomColors.white }}>
@@ -54,6 +79,8 @@ const Login = () => {
                             style={{
                                 width: "100%"
                             }}
+                            value={email}
+                            onChangeText={(value) => setEmail(value)}
                         />
                     </View>
                 </View>
@@ -78,13 +105,15 @@ const Login = () => {
                         <TextInput
                             placeholder='Enter your password'
                             placeholderTextColor={CustomColors.black}
-                            secureTextEntry={password}
+                            // secureTextEntry={password}
                             style={{
                                 width: "100%"
                             }}
+                            value={password}
+                            onChangeText={(value) => setPassword(value)}
                         />
 
-                        <TouchableOpacity
+                        {/* <TouchableOpacity
                             onPress={() => setPassword(!password)}
                             style={{
                                 position: "absolute",
@@ -99,14 +128,15 @@ const Login = () => {
                                 )
                             }
 
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                     </View>
                 </View>
 
                 {/* Button Log in */}
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => { navigation.navigate('Manage') }}
+                    // onPress={() => { navigation.navigate('Manage') }}
+                    onPress={handleConfirm}
                 >
                     <Text style={styles.text}>Login</Text>
                 </TouchableOpacity>

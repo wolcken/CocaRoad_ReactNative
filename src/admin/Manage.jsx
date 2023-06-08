@@ -10,16 +10,16 @@ const Manage = () => {
     return (
         <View style={styles.container}>
             <TouchableOpacity
-                // disabled={true}
-                style={styles.button}
+                disabled={true}
+                style={styles.buttonDesactive}
                 onPress={() => { navigation.navigate('Create') }}
             >
                 <Text style={styles.text}>Create</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
-                // disabled={true}
-                style={styles.button}
+                disabled={true}
+                style={styles.buttonDesactive}
                 onPress={() => { navigation.navigate('Delete') }}
 
             >
@@ -28,7 +28,7 @@ const Manage = () => {
 
             <TouchableOpacity
                 // disabled={true}
-                style={styles.button}
+                style={styles.buttonActive}
                 onPress={() => { navigation.navigate('Edit') }}
             >
                 <Text style={styles.text}>Edit</Text>
@@ -43,13 +43,23 @@ const styles = StyleSheet.create({
         padding: 20,
         justifyContent: 'center'
     },
-    button: {
+    buttonActive: {
         margin: 20,
         alignItems: 'center',
         paddingVertical: 12,
         borderRadius: 15,
         elevation: 5,
         backgroundColor: CustomColors.secondary,
+        borderWidth: 1,
+        borderColor: CustomColors.grey
+    },
+    buttonDesactive: {
+        margin: 20,
+        alignItems: 'center',
+        paddingVertical: 12,
+        borderRadius: 15,
+        elevation: 5,
+        backgroundColor: CustomColors.grey,
         borderWidth: 1,
         borderColor: CustomColors.grey
     },

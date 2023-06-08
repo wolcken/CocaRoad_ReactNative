@@ -6,25 +6,29 @@ import { NavigationContainer } from '@react-navigation/native';
 import CustonDrawer from './components/CustonDrawer';
 
 //Screens Public
-import Login from './screens/Login';
-import Signup from './screens/Signup';
 import Welcome from './screens/Welcome';
 import CustomColors from './stylus/colors';
 import Adepcoca from './screens/Adepcoca';
 import Sacaba from './screens/Sacaba';
 import Minorista from './screens/Minorista';
+import Law from './screens/Law';
+import Testing from './screens/Testing';
+
+//Screens User
+import Login from './screens/Login';
+import Signup from './screens/Signup';
 
 //Screens Admin
-import Create from './admin/Create';
 import Manage from './admin/Manage';
+import Create from './admin/Create';
+import Delete from './admin/Delete';
+import Edit from './admin/Edit';
+import EditPrices from './admin/EditPrices';
 
 //icons
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from '@expo/vector-icons';
-import Testing from './screens/Testing';
-import Delete from './admin/Delete';
-import Edit from './admin/Edit';
-import EditPrices from './admin/EditPrices';
+import { Octicons } from '@expo/vector-icons';
 
 //Drawers navigation
 const Drawer = createDrawerNavigator();
@@ -92,6 +96,17 @@ function MyDrawer() {
                     title: 'Minoristas',
                     drawerIcon: () => (
                         <FontAwesome5 name="money-bill-wave" size={20} color={CustomColors.primary} />
+                    )
+                }}
+            />
+            <Drawer.Screen
+                name="Law"
+                component={Law}
+                options={{
+                    drawerLabel: 'Ley N° 906',
+                    title: 'Ley N° 906',
+                    drawerIcon: () => (
+                        <Octicons name="law" size={24} color={CustomColors.primary} />
                     )
                 }}
             />
